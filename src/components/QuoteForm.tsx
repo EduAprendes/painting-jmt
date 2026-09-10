@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { T } from "@/lib/language-context";
+import { T, useLanguage } from "@/lib/language-context";
 import { CheckIcon, MailIcon, PencilIcon, PhoneIcon, PinIcon, UserIcon } from "./Icons";
 
 export function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { lang } = useLanguage();
+  const ph = (es: string, en: string) => (lang === "en" ? en : es);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,42 +66,61 @@ export function QuoteForm() {
 
         <div className="field-row">
           <div className="field">
-            <label htmlFor="qf-name">
-              <T es="Nombre" en="Name" />
-            </label>
             <div className="input-icon-wrap">
               <UserIcon className="input-icon" />
-              <input type="text" id="qf-name" name="name" required autoComplete="name" />
+              <input
+                type="text"
+                id="qf-name"
+                name="name"
+                required
+                autoComplete="name"
+                placeholder={ph("Nombre", "Name")}
+                aria-label={ph("Nombre", "Name")}
+              />
             </div>
           </div>
           <div className="field">
-            <label htmlFor="qf-phone">
-              <T es="Teléfono" en="Phone" />
-            </label>
             <div className="input-icon-wrap">
               <PhoneIcon className="input-icon" />
-              <input type="tel" id="qf-phone" name="phone" required autoComplete="tel" />
+              <input
+                type="tel"
+                id="qf-phone"
+                name="phone"
+                required
+                autoComplete="tel"
+                placeholder={ph("Teléfono", "Phone")}
+                aria-label={ph("Teléfono", "Phone")}
+              />
             </div>
           </div>
         </div>
 
         <div className="field-row">
           <div className="field">
-            <label htmlFor="qf-email">
-              <T es="Correo" en="Email" />
-            </label>
             <div className="input-icon-wrap">
               <MailIcon className="input-icon" />
-              <input type="email" id="qf-email" name="email" required autoComplete="email" />
+              <input
+                type="email"
+                id="qf-email"
+                name="email"
+                required
+                autoComplete="email"
+                placeholder={ph("Correo", "Email")}
+                aria-label={ph("Correo", "Email")}
+              />
             </div>
           </div>
           <div className="field">
-            <label htmlFor="qf-location">
-              <T es="Ubicación" en="Location" />
-            </label>
             <div className="input-icon-wrap">
               <PinIcon className="input-icon" />
-              <input type="text" id="qf-location" name="location" autoComplete="off" />
+              <input
+                type="text"
+                id="qf-location"
+                name="location"
+                autoComplete="off"
+                placeholder={ph("Ubicación", "Location")}
+                aria-label={ph("Ubicación", "Location")}
+              />
             </div>
           </div>
         </div>

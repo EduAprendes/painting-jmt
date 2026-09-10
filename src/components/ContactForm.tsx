@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { T } from "@/lib/language-context";
+import { T, useLanguage } from "@/lib/language-context";
 import { Reveal } from "./Reveal";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { lang } = useLanguage();
+  const ph = (es: string, en: string) => (lang === "en" ? en : es);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,23 +29,37 @@ export function ContactForm() {
         <>
           <div className="field-row">
             <div className="field">
-              <label htmlFor="cf-name">
-                <T es="Nombre" en="Name" />
-              </label>
-              <input type="text" id="cf-name" name="name" required autoComplete="name" />
+              <input
+                type="text"
+                id="cf-name"
+                name="name"
+                required
+                autoComplete="name"
+                placeholder={ph("Nombre", "Name")}
+                aria-label={ph("Nombre", "Name")}
+              />
             </div>
             <div className="field">
-              <label htmlFor="cf-phone">
-                <T es="Teléfono" en="Phone" />
-              </label>
-              <input type="tel" id="cf-phone" name="phone" required autoComplete="tel" />
+              <input
+                type="tel"
+                id="cf-phone"
+                name="phone"
+                required
+                autoComplete="tel"
+                placeholder={ph("Teléfono", "Phone")}
+                aria-label={ph("Teléfono", "Phone")}
+              />
             </div>
           </div>
           <div className="field">
-            <label htmlFor="cf-message">
-              <T es="Mensaje" en="Message" />
-            </label>
-            <textarea id="cf-message" name="message" rows={4} required></textarea>
+            <textarea
+              id="cf-message"
+              name="message"
+              rows={4}
+              required
+              placeholder={ph("Mensaje", "Message")}
+              aria-label={ph("Mensaje", "Message")}
+            ></textarea>
           </div>
           <button type="submit" className="btn btn-primary btn-block">
             <T es="Enviar mensaje" en="Send message" />

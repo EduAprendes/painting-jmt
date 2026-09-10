@@ -241,13 +241,13 @@ h3{font-size:1.15rem;font-weight:600;}
 
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .field{margin-bottom:14px;}
-.field label{display:block;font-size:.8rem;font-weight:500;color:var(--navy-900);margin-bottom:6px;}
 .field input,.field textarea{
-  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  width:100%;padding:13px;border:1px solid var(--line);border-radius:var(--radius-sm);
   background:var(--cream-50);transition:border-color .2s ease, background .2s ease;
 }
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue-600);background:var(--paper);}
 .field textarea{resize:vertical;min-height:64px;}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-faint);}
 
 .input-icon-wrap{position:relative;}
 .input-icon-wrap .input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-faint);pointer-events:none;}
